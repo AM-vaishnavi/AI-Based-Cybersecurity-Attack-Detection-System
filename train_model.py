@@ -1,8 +1,5 @@
-# ==========================================================
-# AI-Based Network Intrusion Detection System (NIDS)
-# train_model.py
+
 # Train Random Forest using all CSV files
-# ==========================================================
 
 import os
 import glob
@@ -18,9 +15,7 @@ print("AI-Based Network Intrusion Detection System")
 print("Random Forest Model Training")
 print("=" * 60)
 
-# ==========================================================
 # Find all CSV files
-# ==========================================================
 
 csv_files = glob.glob("datasets/*.csv")
 
@@ -30,9 +25,7 @@ if len(csv_files) == 0:
 
 print(f"\nFound {len(csv_files)} CSV files.\n")
 
-# ==========================================================
 # Load and Merge all CSV files
-# ==========================================================
 
 dataframes = []
 
@@ -49,41 +42,31 @@ dataset = pd.concat(dataframes, ignore_index=True)
 print("\nDataset merged successfully.")
 print("Shape :", dataset.shape)
 
-# ==========================================================
 # Remove Missing Values
-# ==========================================================
 
 dataset = dataset.dropna()
 
 print("Shape after cleaning :", dataset.shape)
 
-# ==========================================================
 # Check Label Column
-# ==========================================================
 
 if "Label" not in dataset.columns:
     print("\nERROR: 'Label' column not found.")
     exit()
 
-# ==========================================================
 # Features and Labels
-# ==========================================================
 
 X = dataset.drop("Label", axis=1)
 y = dataset["Label"]
 
-# ==========================================================
 # Convert Categorical Columns
-# ==========================================================
 
 X = pd.get_dummies(X)
 
 # Save feature names
 feature_names = X.columns.tolist()
 
-# ==========================================================
 # Split Dataset
-# ==========================================================
 
 X_train, X_test, y_train, y_test = train_test_split(
     X,
@@ -96,9 +79,7 @@ X_train, X_test, y_train, y_test = train_test_split(
 print("\nTraining Samples :", len(X_train))
 print("Testing Samples  :", len(X_test))
 
-# ==========================================================
 # Train Random Forest
-# ==========================================================
 
 print("\nTraining Random Forest...")
 
@@ -112,9 +93,7 @@ model.fit(X_train, y_train)
 
 print("Training Completed.")
 
-# ==========================================================
 # Evaluate Model
-# ==========================================================
 
 y_pred = model.predict(X_test)
 
@@ -125,9 +104,7 @@ print("\nAccuracy : {:.2f}%".format(accuracy * 100))
 print("\nClassification Report\n")
 print(classification_report(y_test, y_pred))
 
-# ==========================================================
 # Save Model
-# ==========================================================
 
 os.makedirs("model", exist_ok=True)
 

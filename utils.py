@@ -1,8 +1,5 @@
-# ==========================================================
-# AI-Based Network Intrusion Detection System (NIDS)
-# utils.py
+
 # Common Utility Functions
-# ==========================================================
 
 import streamlit as st
 import pandas as pd
@@ -11,9 +8,7 @@ import random
 import time
 import os
 
-# ==========================================================
 # Load External CSS
-# ==========================================================
 
 def load_css():
 
@@ -26,9 +21,7 @@ def load_css():
                 unsafe_allow_html=True
             )
 
-# ==========================================================
 # Generate Simulated Network Traffic
-# ==========================================================
 
 def generate_traffic_data(n_samples=1000, seed=None):
 

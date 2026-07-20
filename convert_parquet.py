@@ -1,8 +1,4 @@
-# ==========================================================
-# AI-Based Network Intrusion Detection System (NIDS)
-# convert_parquet.py
 # Convert All Parquet Files to CSV
-# ==========================================================
 
 import pandas as pd
 import glob
@@ -13,9 +9,7 @@ print("AI-Based Network Intrusion Detection System")
 print("Parquet to CSV Converter")
 print("=" * 60)
 
-# ==========================================================
 # Find All Parquet Files
-# ==========================================================
 
 parquet_files = glob.glob("datasets/*.parquet")
 
@@ -25,9 +19,7 @@ if len(parquet_files) == 0:
 
 print(f"\nFound {len(parquet_files)} Parquet files.\n")
 
-# ==========================================================
 # Convert Each File
-# ==========================================================
 
 for i, file in enumerate(parquet_files, start=1):
 
